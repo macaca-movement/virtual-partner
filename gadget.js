@@ -41,6 +41,27 @@ window.addEventListener("load", () => {
     setInstructions(select.selectedIndex);
 
     audioCtx = new AudioContext();
+
+    const btn = document.getElementById("start-button");
+    btn.onclick = function() {
+      const instruction = instructions[Math.floor((Math.random() * instructions.length))];
+
+      if(audioCtx.state === 'running') {
+        audioCtx.suspend().then(function() {
+          btn.textContent = 'Start';
+          clearTimeout(active_timer);
+          active_timer = 0;
+          document.getElementById("instruction-text").innerHTML = "-";
+          instruction.audio.pause();
+        });
+      } else if(audioCtx.state === 'suspended') {
+        audioCtx.resume().then(function() {
+          btn.textContent = 'Pause';
+          instruction.audio.currentTime = 0;
+          setInstructionTimer();
+        });
+      }
+    }
 })
 
 function setInterval(interval) {
@@ -79,27 +100,10 @@ function newInstruction() {
     if (!active_timer)
         return;
 
-    instruction.audio.play();;
+    instruction.audio.play();
     banner.innerHTML = instruction.name;
     banner.className = "visible";
     setTimeout(() => { banner.className = "hidden"; }, 200);
 
     setInstructionTimer();
-}
-
-function startGadget() {
-    const btn = document.getElementById("start-button");
-
-    if (audioCtx.state === 'suspended')
-		audioCtx.resume();
-
-    if (active_timer) {
-        btn.innerHTML = "Start";
-        clearTimeout(active_timer);
-        active_timer = 0;
-        document.getElementById("instruction-text").innerHTML = "-";
-    } else {
-        btn.innerHTML = "Pause";
-        setInstructionTimer();
-    }
 }
