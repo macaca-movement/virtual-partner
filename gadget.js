@@ -86,7 +86,7 @@ function setInstructions(index) {
 //Safari on iOS only allow to download audio on an user-initiated action
 function loadAudios() {
     instructions.map(instruction => {
-        instruction.load();
+        instruction.audio.load();
         audioCtx.createMediaElementSource(instruction.audio).connect(audioCtx.destination);
     })
 }
