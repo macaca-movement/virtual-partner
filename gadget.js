@@ -63,8 +63,7 @@ window.addEventListener("load", () => {
       }
     }
 
-    UA = navigator.userAgent
-    if (UA.indexOf("Safari") != -1 && UA.indexOf('CriOS') == -1 && UA.indexOf('FxiOS') == -1 && /\b(iPad|iPhone)\b/i.test(UA)) {
+    if (/\b(iPad|iPhone)\b/i.test(navigator.userAgent)) {
         document.getElementById('ios-alert').style.display = 'block';
     }
 })
