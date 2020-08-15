@@ -12,6 +12,10 @@ const allInstructions = [
         name: "Ipsi, Contra",
         instructions: ['ipsi', 'contra']
     },
+    {
+        name: "Directions + Ipsi, Contra",
+        instructions: ['forward-ipsi', 'forward-contra', 'backward-ipsi', 'backward-contra', 'inside-ipsi', 'inside-contra', 'outside-ipsi', 'outside-contra']
+    },
 ];
 
 var instructions = [];
@@ -105,7 +109,7 @@ function newInstruction() {
         return;
 
     instruction.audio.play();
-    banner.innerHTML = instruction.name;
+    banner.innerHTML = instruction.name.replace('-', ' ');
     banner.className = "visible";
     setTimeout(() => { banner.className = "hidden"; }, 200);
 
