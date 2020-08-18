@@ -20,6 +20,7 @@ const allInstructions = [
 
 var instructions = [];
 var active_timer = 0;
+var last_instruction;
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioCtx;
@@ -103,7 +104,10 @@ function setInstructionTimer() {
 
 function newInstruction() {
     const banner = document.getElementById("instruction-text");
-    const instruction = instructions[Math.floor((Math.random() * instructions.length))];
+    const options = instructions.length > 2 ? instructions.filter(i => i.name !== last_instruction) : instructions;
+    const instruction = options[Math.floor((Math.random() * options.length))];
+
+    last_instruction = instruction.name;
 
     if (!active_timer)
         return;
