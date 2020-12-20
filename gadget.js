@@ -16,6 +16,18 @@ const allInstructions = [
         name: "Directions + Ipsi, Contra",
         instructions: ['forward-ipsi', 'forward-contra', 'backward-ipsi', 'backward-contra', 'inside-ipsi', 'inside-contra', 'outside-ipsi', 'outside-contra']
     },
+    {
+        name: "Change Plane, Change Direction",
+        instructions: ['change-plane', 'change-direction']
+    },
+    {
+        name: "Up, Down, Change Plane, Change Direction",
+        instructions: ['up', 'down','change-plane', 'change-direction'],
+    },
+    {
+        name: "Up, Down",
+        instructions: ['up', 'down']
+    },
 ];
 
 var instructions = [];
