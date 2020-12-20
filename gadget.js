@@ -23,6 +23,7 @@ const allInstructions = [
     {
         name: "Up, Down, Change Plane, Change Direction",
         instructions: ['up', 'down','change-plane', 'change-direction'],
+        repeat: true
     },
     {
         name: "Up, Down",
@@ -32,6 +33,7 @@ const allInstructions = [
 
 var instructions = [];
 var active_timer = 0;
+var repeat = false;
 var last_instruction;
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -97,7 +99,9 @@ function setInstructions(index) {
     instructions = allInstructions[index].instructions.map(item => {
         return { name: item, audio: document.getElementById('audio-' + item) }
     })
-}
+
+    repeat = allInstructions[index].repeat ? true : false;
+ }
 
 //Safari on iOS only allow to download audio on an user-initiated action
 function loadAudios() {
@@ -119,7 +123,8 @@ function newInstruction() {
     const options = instructions.length > 2 ? instructions.filter(i => i.name !== last_instruction) : instructions;
     const instruction = options[Math.floor((Math.random() * options.length))];
 
-    last_instruction = instruction.name;
+    if (!repeat)
+        last_instruction = instruction.name;
 
     if (!active_timer)
         return;
