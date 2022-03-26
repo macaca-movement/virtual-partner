@@ -11,6 +11,11 @@ a {
     text-decoration: none;
 }
 
+img.macaca {
+    max-width: 100%;
+    height: auto;
+  }
+
 header {
     border-left: 1em;
 }
@@ -60,7 +65,7 @@ footer {
 
 /* FIXME: one day we should use Sass and configure primary/secondary colors there */
 a {
-    color: #9baf80;
+    color: #89c060;
 }
 
 a:hover {
@@ -72,13 +77,13 @@ a:hover {
 }
 
 .bg-macaca-dark {
-    background-color: #253820;
+    background-color: #1b3220;
 }
 
 .btn-macaca {
     color: #fff;
-    background-color: #9baf80;
-    border-color: #9baf80;
+    background-color: #89c060;
+    border-color: #89c060;
 }
 
 .btn-macaca:hover {
@@ -89,17 +94,17 @@ a:hover {
 }
 
 .badge-macaca {
-    background-color: #253820;
+    background-color: #1b3220;
 }
 
 .slider::-webkit-slider-thumb {
-    background: #253820;
+    background: #1b3220;
 }
 
 .slider::-moz-range-thumb {
-    background: #253820;
+    background: #1b3220;
 }
 
 .slider::-ms-thumb {
-    background: #253820;
+    background: #1b3220;
 }
